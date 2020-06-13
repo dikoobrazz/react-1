@@ -9,7 +9,7 @@ const Header = () => {
           <nav id="header_nav">
             <div className="nav-wrapper white">
               <a href="/profile" className="brand-logo teal-text">
-                It-kama
+                social portal
               </a>
             </div>
           </nav>

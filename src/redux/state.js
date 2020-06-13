@@ -4,7 +4,6 @@ const state = {
       { id: 1, post: "First post!", likeCount: 12 },
       { id: 2, post: "Second post!", likeCount: 19 },
       { id: 3, post: "Hello people...", likeCount: 25 },
-      { id: 4, post: "Mutter!", likeCount: 22 },
     ],
   },
   dialogsPage: {
@@ -19,6 +18,12 @@ const state = {
       { id: 2, name: "Sveta" },
       { id: 3, name: "Sacha" },
       { id: 4, name: "Dima" },
+    ],
+  },
+  sideBar: {
+    friends: [
+      {id: 1, name: "John"},
+      {id: 2, name: "Mike"},
     ],
   },
 };
