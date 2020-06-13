@@ -2,7 +2,7 @@ import React from "react";
 import "./Profile.css";
 import MyPosts from "./MyPosts/MyPosts";
 
-const Profile = () => {
+const Profile = (props) => {
   return (
     <div className="container col l8">
       <div className="row">
@@ -29,7 +29,7 @@ const Profile = () => {
             </span>
           </div>
         </div>
-        <MyPosts />
+        <MyPosts posts={props.state.posts} />
       </div>
     </div>
   );
