@@ -1,0 +1,20 @@
+#dialogs_nav {
+  margin: 10px 0 0 0;
+}
+
+#dialogs_logo {
+  padding: 0 0 0 10px;
+}
+
+.small-card {
+  height: 50px;
+}
+
+.dial-card-link {
+  text-decoration: none;
+  color: white;
+}
+
+.diag_icons {
+  padding: 0 0 10px 0;
+}

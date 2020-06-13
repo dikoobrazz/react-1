@@ -1,30 +1,24 @@
 import React from "react";
-import cls from "./Nav.module.css";
+import "./Nav.css";
 import { NavLink } from "react-router-dom";
 
 const Nav = () => {
   return (
-    <nav className={cls.nav}>
-      <div className={`${cls.item} ${cls.active}`}>
-        <NavLink to="/profile" activeClassName={cls.active}>
-          Profile
-        </NavLink>
-      </div>
-      <div className={cls.item}>
-        <NavLink to="/dialogs" activeClassName={cls.active}>
-          Messages
-        </NavLink>
-      </div>
-      <div className={cls.item}>
-        <a href="#">News</a>
-      </div>
-      <div className={cls.item}>
-        <a href="#">Music</a>
-      </div>
-      <div className={cls.item}>
-        <a href="#">Settings</a>
-      </div>
-    </nav>
+
+    <div className="col l4">
+      <ul className="collection">
+          <li><NavLink to="/profile" className="collection-item waves-effect waves-teal">
+            Profile
+          </NavLink></li>
+          <li><NavLink to="/dialogs" className="collection-item waves-effect waves-teal">
+            Messages
+          </NavLink></li>
+          <li><a href="#" className="collection-item waves-effect waves-teal">News</a></li>
+          <li><a href="#" className="collection-item waves-effect waves-teal">Music</a></li>
+          <li><a href="#" className="collection-item waves-effect waves-teal">Settings</a></li>
+      </ul>
+    </div>
+
   );
 };
 

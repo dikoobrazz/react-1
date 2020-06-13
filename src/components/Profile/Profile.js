@@ -1,24 +1,26 @@
 import React from "react";
-import cls from "./Profile.module.css";
+import "./Profile.css";
 import MyPosts from "./MyPosts/MyPosts";
 
 const Profile = () => {
   return (
-    <div>
-      <div>
-        <img
-          className={cls.big_image}
-          src="https://www.talkwalker.com/images/2020/blog-headers/image-analysis.png"
-        />
+    <div className="container col l8">
+      <div className="row" >
+        <from >
+          <div className="input-field col l12">
+            <textarea id="post" className= "materialize-textarea"></textarea>
+            <label for="post" className="title">New post</label>
+          </div>
+        </from>
       </div>
-      <div>
-        <img
-          className={cls.small_image}
-          src="https://earthsky.org/upl/2018/12/comet-wirtanen-Jack-Fusco-dec-2018-Anza-Borrego-desert-CA-e1544613895713.jpg"
-          alt=""
-        />
+      <div className="row">
+        <div className="container col l12">
+          <div className="hide-on-small-only">
+             <span className="teal-text"><h4>My posts</h4></span>
+          </div>
+        </div>
+        <MyPosts />
       </div>
-      <MyPosts />
     </div>
   );
 };

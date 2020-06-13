@@ -1,14 +1,19 @@
 import React from "react";
-import cls from "./Header.module.css";
+import "./Header.css";
 
 const Header = () => {
   return (
-    <header className={cls.header}>
-      <img
-        src="https://img2.freepng.ru/20180315/vrq/kisspng-logo-lion-shutterstock-red-gradient-lionhead-5aab05d93512d0.9761940315211575932174.jpg"
-        alt=""
-      />
-    </header>
+    <div className="container">
+      <div className="row" >
+         <div class="col s12 m12 l12" >
+            <nav id="header_nav">
+               <div className="nav-wrapper white">
+                  <a href="/profile" className="brand-logo teal-text">It-kama</a>
+               </div>
+            </nav>
+         </div>
+      </div>
+    </div>
   );
 };
 

@@ -1,16 +1,16 @@
 import React from "react";
-import cls from "./Post.module.css";
+import "./Post.css";
 
 const Post = (props) => {
   return (
-    <div className={cls.item}>
-      <img
-        src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcR_B-GqXD5lkkAzRU_SbJwnfFnUAQEEBRKvJpaVe74Vw6Lkivme&usqp=CAU"
-        alt=""
-      />
-      <p>{props.message}</p>
-      <p>{props.like} like</p>
-    </div>
+    <div className="col l12">
+      <div className="card-panel blue-gray">
+         <span className="teal-text">
+            <p>{props.message}</p>
+            <p className="red-text">like: {props.like}</p>
+         </span>
+      </div>
+   </div>
   );
 };
 

@@ -9,10 +9,10 @@ import "./App.css";
 const App = () => {
   return (
     <BrowserRouter>
-      <div className="app-wrapper">
-        <Header />
-        <Nav />
-        <div className="app-wrapper-content">
+      <Header />
+      <div className="container">
+        <div className="row">
+          <Nav />
           <Route path="/profile" component={Profile} />
           <Route path="/dialogs" component={Dialogs} />
         </div>

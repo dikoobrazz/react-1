@@ -1,18 +1,23 @@
-.app-wrapper {
-  display: grid;
-  width: 1200px;
-  margin: 0 auto;
-
-  grid-template-areas:
-    "h h"
-    "n c";
-
-  grid-template-rows: 60px 1fr;
-  grid-template-columns: 2fr 10fr;
-  grid-gap: 10px;
+html {
+   font-family: GillSans, Calibri, Trebuchet, sans-serif;
+   font-size: 18px
 }
 
-.app-wrapper-content {
-  grid-area: c;
-  background-color: lightgray;
-}
+/* .app-wrapper { */
+/*   display: grid; */
+/*   width: 1200px; */
+/*   margin: 0 auto; */
+
+/*   grid-template-areas: */
+/*     "h h" */
+/*     "n c"; */
+
+/*   grid-template-rows: 60px 1fr; */
+/*   grid-template-columns: 2fr 10fr; */
+/*   grid-gap: 10px; */
+/* } */
+
+/* .app-wrapper-content { */
+/*   grid-area: c; */
+/*   background-color: lightgray; */
+/* } */
