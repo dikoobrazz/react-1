@@ -5,18 +5,28 @@ import MyPosts from "./MyPosts/MyPosts";
 const Profile = () => {
   return (
     <div className="container col l8">
-      <div className="row" >
-        <from >
-          <div className="input-field col l12">
-            <textarea id="post" className= "materialize-textarea"></textarea>
-            <label for="post" className="title">New post</label>
-          </div>
-        </from>
-      </div>
       <div className="row">
         <div className="container col l12">
+          <form className="col l12">
+            <div className="row">
+              <div className="input-field">
+                <textarea
+                  id="textarea1"
+                  className="materialize-textarea"
+                ></textarea>
+                <label for="textarea1">New post</label>
+                <div className="btn">
+                  <span>Send post</span>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div className="container col l12">
           <div className="hide-on-small-only">
-             <span className="teal-text"><h4>My posts</h4></span>
+            <span className="teal-text">
+              <h4>My posts</h4>
+            </span>
           </div>
         </div>
         <MyPosts />
