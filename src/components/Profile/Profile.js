@@ -3,6 +3,14 @@ import "./Profile.css";
 import MyPosts from "./MyPosts/MyPosts";
 
 const Profile = (props) => {
+  let newPostElement = React.createRef();
+
+  let addPost = () => {
+    let text = newPostElement.current.value;
+    props.addPost(text);
+    newPostElement.current.value = "";
+  };
+
   return (
     <div className="container col l8">
       <div className="row">
@@ -13,9 +21,10 @@ const Profile = (props) => {
                 <textarea
                   id="textarea1"
                   className="materialize-textarea"
+                  ref={newPostElement}
                 ></textarea>
                 <label for="textarea1">New post</label>
-                <div className="btn">
+                <div className="btn" onClick={addPost}>
                   <span>Send post</span>
                 </div>
               </div>
