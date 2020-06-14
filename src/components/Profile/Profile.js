@@ -12,7 +12,7 @@ const Profile = (props) => {
   let onPostChange = () => {
     let text = newPostElement.current.value;
     props.changeNewPostText(text);
-  }
+  };
 
   return (
     <div className="container col l8">
