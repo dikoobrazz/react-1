@@ -13,16 +13,12 @@ const App = (props) => {
       <div className="container">
         <div className="row">
           <Nav state={props.state.sideBar} />
-          {/* <Route path="/profile" component={Profile} /> */}
-          {/* <Route path="/dialogs" component={Dialogs} /> */}
-
           <Route
             path="/profile"
             render={() => (
               <Profile
                 state={props.state.profilePage}
-                addPost={props.addPost}
-                changeNewPostText={props.changeNewPostText}
+                dispatch={props.dispatch}
               />
             )}
           />
@@ -31,8 +27,7 @@ const App = (props) => {
             render={() => (
               <Dialogs
                 state={props.state.dialogsPage}
-                addMessage={props.addMessage}
-                changeNewMessageText={props.changeNewMessageText}
+                dispatch={props.dispatch}
               />
             )}
           />
