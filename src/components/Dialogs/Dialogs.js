@@ -7,9 +7,13 @@ const Dialogs = (props) => {
   let newMessage = React.createRef();
 
   let sendNewMessage = () => {
+    props.addMessage();
+    props.changeNewMessageText("");
+  };
+
+  let onMessageChange = () => {
     let message = newMessage.current.value;
-    props.addMessage(message);
-    newMessage.current.value = ''
+    props.changeNewMessageText(message);
   };
 
   const dialogElements = props.state.dialogs.map((el) => (
@@ -30,7 +34,7 @@ const Dialogs = (props) => {
       </nav>
       <div className="row">
         <div className="container col l4">
-          <div className="collection">{dialogElements}</div>
+          <div className="collection z-depth-1 hoverable">{dialogElements}</div>
         </div>
         <div className="container col l8">
           <form className="col l12">
@@ -40,7 +44,9 @@ const Dialogs = (props) => {
                   id="textarea1"
                   className="materialize-textarea"
                   ref={newMessage}
-                ></textarea>
+                  onChange={onMessageChange}
+                  value={props.state.newMessageText}
+                />
                 <label for="textarea1">New message</label>
                 <div className="btn" onClick={sendNewMessage}>
                   <span>Send message</span>

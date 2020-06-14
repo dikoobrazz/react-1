@@ -6,10 +6,13 @@ const Profile = (props) => {
   let newPostElement = React.createRef();
 
   let addPost = () => {
-    let text = newPostElement.current.value;
-    props.addPost(text);
-    newPostElement.current.value = "";
+    props.addPost();
   };
+
+  let onPostChange = () => {
+    let text = newPostElement.current.value;
+    props.changeNewPostText(text);
+  }
 
   return (
     <div className="container col l8">
@@ -22,7 +25,9 @@ const Profile = (props) => {
                   id="textarea1"
                   className="materialize-textarea"
                   ref={newPostElement}
-                ></textarea>
+                  onChange={onPostChange}
+                  value={props.state.newPostText}
+                />
                 <label for="textarea1">New post</label>
                 <div className="btn" onClick={addPost}>
                   <span>Send post</span>

@@ -1,19 +1,27 @@
-// import React from "react";
-// import ReactDOM from "react-dom";
-// import App from "./App";
+import React from "react";
+import ReactDOM from "react-dom";
+import App from "./App";
 import state from "./redux/state";
-// import { addPost } from "./redux/state";
-import { rerenderEntireTree } from "./render";
+import { addPost } from "./redux/state";
+import { addMessage } from "./redux/state";
+import { changeNewPostText } from "./redux/state";
+import { changeNewMessageText } from "./redux/state";
+import { subscribe } from "./redux/state";
 
-// addPost("Hey! its addPost");
-
-// export let rerenderEntireTree = () => {
-//   ReactDOM.render(
-//     <React.StrictMode>
-//       <App state={state} addPost={addPost} />
-//     </React.StrictMode>,
-//     document.getElementById("root")
-//   );
-// };
+let rerenderEntireTree = (state) => {
+  ReactDOM.render(
+    <React.StrictMode>
+      <App
+        state={state}
+        addPost={addPost}
+        addMessage={addMessage}
+        changeNewPostText={changeNewPostText}
+        changeNewMessageText={changeNewMessageText}
+      />
+    </React.StrictMode>,
+    document.getElementById("root")
+  );
+};
 
 rerenderEntireTree(state);
+subscribe(rerenderEntireTree);
