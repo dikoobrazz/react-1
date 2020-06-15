@@ -5,7 +5,7 @@ const DialogItem = (props) => {
   let path = "/dialogs/" + props.id;
   return (
     <NavLink to={path} className="collection-item" key={props.id}>
-      <i className="small left material-icons diag_icons">account_circle</i>
+      <i className="small left material-icons diag_icons">faces</i>
       <span className="badge">1</span>
       {props.name}
     </NavLink>
@@ -13,3 +13,4 @@ const DialogItem = (props) => {
 };
 
 export default DialogItem;
+

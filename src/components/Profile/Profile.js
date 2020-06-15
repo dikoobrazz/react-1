@@ -1,20 +1,24 @@
 import React from "react";
 import "./Profile.css";
 import MyPosts from "./MyPosts/MyPosts";
+import {
+  addPostActionCreator,
+  changeNewPostTextActionCreater,
+} from "../../redux/profile-reducer";
 
 const Profile = (props) => {
   let newPostElement = React.createRef();
 
   let addPost = () => {
     // props.addPost();
-    props.dispatch({ type: "ADD-POST" });
+    props.dispatch(addPostActionCreator());
   };
 
   let onPostChange = () => {
     let text = newPostElement.current.value;
     // props.changeNewPostText(text);
-    let action = { type: "CHANGE-NEW-POST-TEXT", postMessage: text };
-    props.dispatch(action);
+    // let action = { type: "CHANGE-NEW-POST-TEXT", postMessage: text };
+    props.dispatch(changeNewPostTextActionCreater(text));
   };
 
   return (

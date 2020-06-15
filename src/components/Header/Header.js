@@ -9,7 +9,8 @@ const Header = () => {
           <nav id="header_nav">
             <div className="nav-wrapper white">
               <a href="/profile" className="brand-logo teal-text">
-                social portal
+                <i className="material-icons">settings_ethernet</i>
+                React Redux
               </a>
             </div>
           </nav>
