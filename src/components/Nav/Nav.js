@@ -39,7 +39,7 @@ const Nav = (props) => {
           </a>
         </li>
       </ul>
-      <Friends friends={props.state.friends} />
+      <Friends friends={props.friends} />
     </div>
   );
 };
