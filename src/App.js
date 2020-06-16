@@ -1,10 +1,10 @@
 import React from "react";
 import Header from "./components/Header/Header";
 import Nav from "./components/Nav/Nav";
-import Profile from "./components/Profile/Profile";
-import Dialogs from "./components/Dialogs/Dialogs";
 import { BrowserRouter, Route } from "react-router-dom";
 import "./App.css";
+import ProfileContainer from "./components/Profile/ProfileContainer";
+import DialogsContainer from "./components/Dialogs/DialogsContainer";
 
 const App = (props) => {
   return (
@@ -12,24 +12,14 @@ const App = (props) => {
       <Header />
       <div className="container">
         <div className="row">
-          <Nav state={props.state.sideBar} />
+          <Nav state={props.store.getState().sideBar} />
           <Route
             path="/profile"
-            render={() => (
-              <Profile
-                state={props.state.profilePage}
-                dispatch={props.dispatch}
-              />
-            )}
+            render={() => <ProfileContainer store={props.store} />}
           />
           <Route
             path="/dialogs"
-            render={() => (
-              <Dialogs
-                state={props.state.dialogsPage}
-                dispatch={props.dispatch}
-              />
-            )}
+            render={() => <DialogsContainer store={props.store} />}
           />
         </div>
       </div>

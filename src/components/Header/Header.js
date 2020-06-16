@@ -12,6 +12,17 @@ const Header = () => {
                 <i className="material-icons">settings_ethernet</i>
                 React Redux
               </a>
+              <ul id="nav-mobile" className="right hide-on-med-and-down">
+                <li>
+                  <a
+                    id="materialize"
+                    href="https://materializecss.com"
+                    className="red-text"
+                  >
+                    end material design
+                  </a>
+                </li>
+              </ul>
             </div>
           </nav>
         </div>

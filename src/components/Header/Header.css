@@ -6,6 +6,9 @@ a.brand-logo {
   margin: 20px 0 0 0;
 }
 
+#materialize {
+  font-style: italic;
+}
 /*.header {
   grid-area: h;
   background-color: #1f1f1f;
@@ -15,3 +18,4 @@ a.brand-logo {
   width: 50px;
 }
 */
+

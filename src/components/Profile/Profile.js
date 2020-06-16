@@ -1,24 +1,17 @@
 import React from "react";
 import "./Profile.css";
 import MyPosts from "./MyPosts/MyPosts";
-import {
-  addPostActionCreator,
-  changeNewPostTextActionCreater,
-} from "../../redux/profile-reducer";
 
 const Profile = (props) => {
   let newPostElement = React.createRef();
 
-  let addPost = () => {
-    // props.addPost();
-    props.dispatch(addPostActionCreator());
+  let onPostAdd = () => {
+    props.addPost();
   };
 
-  let onPostChange = () => {
+  let onPostTextChange = () => {
     let text = newPostElement.current.value;
-    // props.changeNewPostText(text);
-    // let action = { type: "CHANGE-NEW-POST-TEXT", postMessage: text };
-    props.dispatch(changeNewPostTextActionCreater(text));
+    props.onPostChange(text);
   };
 
   return (
@@ -32,11 +25,11 @@ const Profile = (props) => {
                   id="textarea1"
                   className="materialize-textarea"
                   ref={newPostElement}
-                  onChange={onPostChange}
-                  value={props.state.newPostText}
+                  onChange={onPostTextChange}
+                  value={props.newPostText}
                 />
                 <label for="textarea1">New post</label>
-                <div className="btn" onClick={addPost}>
+                <div className="btn" onClick={onPostAdd}>
                   <span>Send post</span>
                 </div>
               </div>
@@ -50,7 +43,7 @@ const Profile = (props) => {
             </span>
           </div>
         </div>
-        <MyPosts posts={props.state.posts} />
+        <MyPosts posts={props.posts} />
       </div>
     </div>
   );

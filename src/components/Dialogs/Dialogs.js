@@ -2,23 +2,16 @@ import React from "react";
 import "./Dialogs.css";
 import DialogItem from "./DialogItem/DialogItem";
 import Message from "./Message/Message";
-import {
-  sendNewMessageActionCreator,
-  changeNewMessageTextActionCreator,
-} from "../../redux/dialogs-reducer";
 
 const Dialogs = (props) => {
-  let newMessage = React.createRef();
-
-  let sendNewMessage = () => {
-    // props.addMessage();
-    props.dispatch(sendNewMessageActionCreator());
+  let onSendNewMessage = () => {
+    props.addMessage();
   };
 
-  let onMessageChange = () => {
-    let message = newMessage.current.value;
-    // props.changeNewMessageText(message);
-    props.dispatch(changeNewMessageTextActionCreator(message));
+  let onMessageChange = (e) => {
+    debugger;
+    let message = e.target.value;
+    props.changeNewMessageText(message);
   };
 
   const dialogElements = props.state.dialogs.map((el) => (
@@ -48,12 +41,11 @@ const Dialogs = (props) => {
                 <textarea
                   id="textarea1"
                   className="materialize-textarea"
-                  ref={newMessage}
                   onChange={onMessageChange}
                   value={props.state.newMessageText}
                 />
                 <label for="textarea1">New message</label>
-                <div className="btn" onClick={sendNewMessage}>
+                <div className="btn" onClick={onSendNewMessage}>
                   <span>Send message</span>
                 </div>
               </div>
