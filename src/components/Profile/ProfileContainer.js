@@ -2,6 +2,7 @@ import React from "react";
 import {
   addPostActionCreator,
   changeNewPostTextActionCreater,
+  changeTitleTextCreator,
 } from "../../redux/profile-reducer";
 import Profile from "./Profile";
 import { connect } from "react-redux";
@@ -31,6 +32,7 @@ const mapStateToProps = (state) => {
   return {
     posts: state.profilePage.posts,
     newPostText: state.profilePage.newPostText,
+    newTitleText: state.profilePage.newTitleText,
   };
 };
 
@@ -41,6 +43,9 @@ const mapDispatchToProps = (dispatch) => {
     },
     onPostChange: (text) => {
       dispatch(changeNewPostTextActionCreater(text));
+    },
+    onTitleChange: (title) => {
+      dispatch(changeTitleTextCreator(title));
     },
   };
 };

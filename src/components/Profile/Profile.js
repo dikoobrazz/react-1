@@ -14,11 +14,27 @@ const Profile = (props) => {
     props.onPostChange(text);
   };
 
+  let onTitleTextChange = (e) => {
+    let title = e.target.value;
+    props.onTitleChange(title);
+  };
+
   return (
     <div className="container col l8">
       <div className="row">
         <div className="container col l12">
           <form className="col l12">
+            <div className="row">
+              <div className="input-field">
+                <input
+                  id="input_text"
+                  type="text"
+                  onChange={onTitleTextChange}
+                  value={props.newTitleText}
+                />
+                <label for="input_text">Title</label>
+              </div>
+            </div>
             <div className="row">
               <div className="input-field">
                 <textarea
@@ -39,7 +55,7 @@ const Profile = (props) => {
         <div className="container col l12">
           <div className="hide-on-small-only">
             <span className="teal-text">
-              <h4>My posts</h4>
+              <p>My posts</p>
             </span>
           </div>
         </div>
