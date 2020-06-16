@@ -6,7 +6,7 @@ import ProfileContainer from "./components/Profile/ProfileContainer";
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
 import NavContainer from "./components/Nav/NavContainer";
 
-const App = (props) => {
+const App = () => {
   return (
     <BrowserRouter>
       <Header />
