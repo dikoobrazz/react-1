@@ -12,7 +12,9 @@ const Post = (props) => {
         <div className="card-action ">
           <i className="tiny material-icons teal-text left">thumb_up</i>
           {props.like}
-          <a className="waves-effect waves-light btn-small right">More</a>
+          <a href="!#" className="waves-effect waves-light btn-small right">
+            More
+          </a>
         </div>
       </div>
     </div>

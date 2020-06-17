@@ -32,12 +32,12 @@ const Nav = (props) => {
           </NavLink>
         </li>
         <li>
-          <a href="#" className="collection-item waves-effect waves-teal">
+          <a href="!#" className="collection-item waves-effect waves-teal">
             Music
           </a>
         </li>
         <li>
-          <a href="#" className="collection-item waves-effect waves-teal">
+          <a href="!#" className="collection-item waves-effect waves-teal">
             Settings
           </a>
         </li>
