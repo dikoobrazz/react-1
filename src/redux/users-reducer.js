@@ -5,28 +5,44 @@ let initialState = {
   users: [
     {
       id: 1,
-      username: "John",
+      name: "John",
+      photos: {
+        small: "https://img.icons8.com/bubbles/50/000000/user.png",
+        large: "https://img.icons8.com/bubbles/100/000000/user.png",
+      },
       status: "I am a boss",
       location: { country: "USA", city: "NY" },
       followed: false,
     },
     {
       id: 2,
-      username: "Mike",
+      name: "Mike",
+      photos: {
+        small: "https://img.icons8.com/bubbles/50/000000/user-male.png",
+        large: "https://img.icons8.com/bubbles/100/000000/user-male.png",
+      },
       status: "I am a boss too",
       location: { country: "Russia", city: "Moscow" },
       followed: true,
     },
     {
       id: 3,
-      username: "Dik",
+      name: "Dik",
+      photos: {
+        small: "https://img.icons8.com/bubbles/50/000000/lock-male-user.png",
+        large: "https://img.icons8.com/bubbles/100/000000/lock-male-user.png",
+      },
       status: "hello every one",
       location: { country: "Belarus", city: "Minsk" },
       followed: true,
     },
     {
       id: 4,
-      username: "Jessica",
+      name: "Jessica",
+      photos: {
+        small: "https://img.icons8.com/bubbles/50/000000/add-female-user.png",
+        large: "https://img.icons8.com/bubbles/100/000000/add-female-user.png",
+      },
       status: "Look at me, I am MADAM!",
       location: { country: "Russia", city: "S.Peterburg" },
       followed: false,

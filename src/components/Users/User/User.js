@@ -5,10 +5,7 @@ const User = (props) => {
   return (
     <div className="card-panel white hoverable">
       <div className="card-action">
-        <img
-          src="https://img.icons8.com/bubbles/50/000000/user-male.png"
-          className="circle small responsive-img left"
-        />
+        <img src={props.photo} className="circle small responsive-img left" />
         <a className="red-text right">{props.fullname}</a>
       </div>
       <p className="teal-text">{props.status}</p>
