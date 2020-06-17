@@ -18,7 +18,7 @@ let initialState = {
     },
   ],
   newPostText: "",
-  newTitleText: "",
+  newTitleText: "Post Title",
 };
 
 const profileReducer = (state = initialState, action) => {
@@ -27,7 +27,7 @@ const profileReducer = (state = initialState, action) => {
       return {
         ...state,
         newPostText: "",
-        newTitleText: "",
+        newTitleText: "Post Title",
         posts: [
           ...state.posts,
           {

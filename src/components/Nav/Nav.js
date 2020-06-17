@@ -24,9 +24,12 @@ const Nav = (props) => {
           </NavLink>
         </li>
         <li>
-          <a href="#" className="collection-item waves-effect waves-teal">
-            News
-          </a>
+          <NavLink
+            to="/users"
+            className="collection-item waves-effect waves-teal"
+          >
+            Users
+          </NavLink>
         </li>
         <li>
           <a href="#" className="collection-item waves-effect waves-teal">
