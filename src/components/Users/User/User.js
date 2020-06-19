@@ -10,7 +10,7 @@ const User = (props) => {
           alt=""
           className="circle small responsive-img left"
         />
-        <a href="!#" className="red-text right">
+        <a href="#!" className="red-text right">
           {props.fullname}
         </a>
       </div>
@@ -18,7 +18,7 @@ const User = (props) => {
       <div className="card-action">
         {props.followed ? (
           <a
-            href="!#"
+            href="#!"
             className="waves-effect waves-light btn-small red"
             onClick={() => props.follow(props.id)}
           >
@@ -26,14 +26,14 @@ const User = (props) => {
           </a>
         ) : (
           <a
-            href="!#"
+            href="#!"
             className="waves-effect waves-light btn-small"
             onClick={() => props.follow(props.id)}
           >
             Follow
           </a>
         )}
-        <a href="!#" className="teal-text right">
+        <a href="#!" className="teal-text right">
           {props.city}, {props.country}
         </a>
       </div>

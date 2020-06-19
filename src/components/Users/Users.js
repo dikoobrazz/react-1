@@ -7,13 +7,36 @@ import * as axios from "axios";
 class Users extends React.Component {
   componentDidMount() {
     axios
-      .get("https://social-network.samuraijs.com/api/1.0/users")
+      .get(
+        `https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`
+      )
+      .then((response) => {
+        this.props.setUsers(response.data.items);
+        // this.props.setTotalUserCount(response.data.totalCount);
+      });
+  }
+
+  onPageChanged = (pageNumber) => {
+    this.props.setCurrentPage(pageNumber)
+    axios
+      .get(
+        `https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`
+      )
       .then((response) => {
         this.props.setUsers(response.data.items);
       });
   }
 
   render() {
+    let pagesCount = Math.ceil(
+      this.props.totalUsersCount / this.props.pageSize
+    );
+
+    let pages = [];
+    for (let i = 1; i <= pagesCount; i++) {
+      pages.push(i);
+    }
+
     let users = this.props.users.map((user) => (
       <User
         id={user.id}
@@ -28,37 +51,40 @@ class Users extends React.Component {
     ));
     return (
       <div className="container col l8">
-        {users}
-
         <div className="center">
           <ul className="pagination">
             <li className="disabled">
               <a href="#!">
-                <i className="tiny material-icons">chevron_left</i>
+                <i className="material-icons">chevron_left</i>
               </a>
             </li>
-            <li className="active">
-              <a href="#!">1</a>
-            </li>
-            <li className="waves-effect">
-              <a href="#!">2</a>
-            </li>
-            <li className="waves-effect">
-              <a href="#!">3</a>
-            </li>
-            <li className="waves-effect">
-              <a href="#!">4</a>
-            </li>
-            <li className="waves-effect">
-              <a href="#!">5</a>
-            </li>
+            {pages.map((p) => {
+              return (
+                <li
+                  className={
+                    this.props.currentPage === p ? "active" : "waves-effect"
+                  }
+                >
+                  <a
+                    href="#!"
+                    onClick={() => {
+                      this.onPageChanged(p);
+                    }}
+                  >
+                    {p}
+                  </a>
+                </li>
+              );
+            })}
+
             <li className="waves-effect">
               <a href="#!">
-                <i className="tiny material-icons">chevron_right</i>
+                <i className="material-icons">chevron_right</i>
               </a>
             </li>
           </ul>
         </div>
+        {users}
       </div>
     );
   }
