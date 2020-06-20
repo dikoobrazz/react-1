@@ -11,7 +11,7 @@ const App = () => {
   return (
     <BrowserRouter>
       <Header />
-      <div className="container">
+        <div className="container">
         <div className="row">
           <NavContainer />
           <Route path="/profile" render={() => <ProfileContainer />} />

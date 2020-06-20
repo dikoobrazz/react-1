@@ -20,7 +20,7 @@ const Users = (props) => {
       {users}
 
       <div className="container col l12 center">
-        <a class="waves-effect waves-light btn">continue</a>
+        <a className="waves-effect waves-light btn">continue</a>
       </div>
     </div>
   );

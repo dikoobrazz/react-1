@@ -3,29 +3,35 @@ import User from "./User/User";
 import user_default from "../../assets/img/user_default.png";
 import "./Users.css";
 import * as axios from "axios";
+import preloader from "../../assets/img/preloader.svg";
+import Preloader from "../common/Preloader/Preloader";
 
-class Users extends React.Component {
+class UsersAPIContainer extends React.Component {
   componentDidMount() {
+    this.props.setIsFetching(true);
     axios
       .get(
         `https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`
       )
       .then((response) => {
+        this.props.setIsFetching(false);
         this.props.setUsers(response.data.items);
-        // this.props.setTotalUserCount(response.data.totalCount);
+        // this.props.setTotalUserCount(response.data.totalCount); // match more ...
       });
   }
 
   onPageChanged = (pageNumber) => {
-    this.props.setCurrentPage(pageNumber)
+    this.props.setCurrentPage(pageNumber);
+    this.props.setIsFetching(true);
     axios
       .get(
         `https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`
       )
       .then((response) => {
+        this.props.setIsFetching(false);
         this.props.setUsers(response.data.items);
       });
-  }
+  };
 
   render() {
     let pagesCount = Math.ceil(
@@ -52,6 +58,7 @@ class Users extends React.Component {
     return (
       <div className="container col l8">
         <div className="center">
+          {this.props.isFetching ? <Preloader /> : null}
           <ul className="pagination">
             <li className="disabled">
               <a href="#!">
@@ -90,4 +97,4 @@ class Users extends React.Component {
   }
 }
 
-export default Users;
+export default UsersAPIContainer;
