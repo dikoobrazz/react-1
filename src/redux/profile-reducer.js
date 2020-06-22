@@ -1,6 +1,7 @@
 const ADD_POST = "ADD_POST";
 const CHANGE_NEW_POST_TEXT = "CHANGE_NEW_POST_TEXT";
 const CHANGE_TITLE_TEXT = "CHANGE_TITLE_TEXT";
+const SET_USER_PROFILE = "SET_USER_PROFILE";
 
 let initialState = {
   posts: [
@@ -17,6 +18,7 @@ let initialState = {
       likeCount: 19,
     },
   ],
+  profile: null,
   newPostText: "",
   newTitleText: "",
 };
@@ -50,21 +52,32 @@ const profileReducer = (state = initialState, action) => {
         ...state,
         newTitleText: action.titleText,
       };
+    case SET_USER_PROFILE: {
+      return {
+        ...state,
+        profile: action.profile,
+      };
+    }
     default:
       return state;
   }
 };
 
-export const addPostActionCreator = () => ({ type: ADD_POST });
+export const addPost = () => ({ type: ADD_POST });
 
-export const changeNewPostTextActionCreater = (text) => ({
+export const onPostChange = (text) => ({
   type: CHANGE_NEW_POST_TEXT,
   postMessage: text,
 });
 
-export const changeTitleTextCreator = (title) => ({
+export const onTitleChange = (title) => ({
   type: CHANGE_TITLE_TEXT,
   titleText: title,
+});
+
+export const setUserProfile = (profile) => ({
+  type: SET_USER_PROFILE,
+  profile,
 });
 
 export default profileReducer;

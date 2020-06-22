@@ -1,10 +1,12 @@
 import {
-  addPostActionCreator,
-  changeNewPostTextActionCreater,
-  changeTitleTextCreator,
+  addPost,
+  onPostChange,
+  onTitleChange,
+  setUserProfile,
 } from "../../redux/profile-reducer";
-import Profile from "./Profile";
+import ProfileClass from "./ProfileClass";
 import { connect } from "react-redux";
+import { withRouter } from "react-router-dom";
 
 // const ProfileContainer = (props) => {
 //   let state = props.store.getState().profilePage;
@@ -32,23 +34,31 @@ const mapStateToProps = (state) => {
     posts: state.profilePage.posts,
     newPostText: state.profilePage.newPostText,
     newTitleText: state.profilePage.newTitleText,
+    profile: state.profilePage.profile,
   };
 };
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    addPost: () => {
-      dispatch(addPostActionCreator());
-    },
-    onPostChange: (text) => {
-      dispatch(changeNewPostTextActionCreater(text));
-    },
-    onTitleChange: (title) => {
-      dispatch(changeTitleTextCreator(title));
-    },
-  };
-};
+// const mapDispatchToProps = (dispatch) => {
+//   return {
+//     addPost: () => {
+//       dispatch(addPostActionCreator());
+//     },
+//     onPostChange: (text) => {
+//       dispatch(changeNewPostTextActionCreater(text));
+//     },
+//     onTitleChange: (title) => {
+//       dispatch(changeTitleTextCreator(title));
+//     },
+//   };
+// };
 
-const ProfileContainer = connect(mapStateToProps, mapDispatchToProps)(Profile);
+let WithUrlDataContainerComponent = withRouter(ProfileClass);
+
+const ProfileContainer = connect(mapStateToProps, {
+  addPost,
+  onPostChange,
+  onTitleChange,
+  setUserProfile,
+})(WithUrlDataContainerComponent);
 
 export default ProfileContainer;

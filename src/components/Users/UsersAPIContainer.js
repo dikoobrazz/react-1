@@ -3,7 +3,7 @@ import User from "./User/User";
 import user_default from "../../assets/img/user_default.png";
 import "./Users.css";
 import * as axios from "axios";
-import preloader from "../../assets/img/preloader.svg";
+// import preloader from "../../assets/img/preloader.svg";
 import Preloader from "../common/Preloader/Preloader";
 
 class UsersAPIContainer extends React.Component {

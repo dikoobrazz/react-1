@@ -52,7 +52,7 @@ let initialState = {
     // },
   ],
   pageSize: 5,
-  totalUsersCount: 25,
+  totalUsersCount: 70,
   currentPage: 1,
   isFetching: false,
 };
