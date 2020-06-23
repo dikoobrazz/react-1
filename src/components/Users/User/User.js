@@ -1,6 +1,7 @@
 import React from "react";
 import "./User.css";
 import { NavLink } from "react-router-dom";
+import * as axios from "axios";
 
 const User = (props) => {
   return (
@@ -23,7 +24,23 @@ const User = (props) => {
           <a
             href="#!"
             className="waves-effect waves-light btn-small red"
-            onClick={() => props.follow(props.id)}
+            onClick={() =>
+              axios
+                .delete(
+                  `https://social-network.samuraijs.com/api/1.0/follow/${props.id}`,
+                  {
+                    withCredentials: true,
+                    headers: {
+                      "API-KEY": "fc50ce47-e3e8-4eca-a3d1-3ff99486c4e4",
+                    },
+                  }
+                )
+                .then((response) => {
+                  if (response.data.resultCode === 0) {
+                    props.follow(props.id);
+                  }
+                })
+            }
           >
             Unfollow
           </a>
@@ -31,7 +48,24 @@ const User = (props) => {
           <a
             href="#!"
             className="waves-effect waves-light btn-small"
-            onClick={() => props.follow(props.id)}
+            onClick={() =>
+              axios
+                .post(
+                  `https://social-network.samuraijs.com/api/1.0/follow/${props.id}`,
+                  {},
+                  {
+                    withCredentials: true,
+                    headers: {
+                      "API-KEY": "fc50ce47-e3e8-4eca-a3d1-3ff99486c4e4",
+                    },
+                  }
+                )
+                .then((response) => {
+                  if (response.data.resultCode === 0) {
+                    props.follow(props.id);
+                  }
+                })
+            }
           >
             Follow
           </a>
