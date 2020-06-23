@@ -1,7 +1,8 @@
 import React from "react";
 import "./Header.css";
+import { NavLink } from "react-router-dom";
 
-const Header = () => {
+const Header = (props) => {
   return (
     <div className="container">
       <div className="row">
@@ -12,14 +13,24 @@ const Header = () => {
                 <i className="material-icons">settings_ethernet</i>
                 React Redux
               </a>
-              <ul id="nav-mobile" className="right hide-on-med-and-down">
+              <ul id="nav-mobile" className="right hide-on-med-and-down ">
+                <li className="red-text">
+                  {props.isAuth ? (
+                    props.login
+                  ) : (
+                    <NavLink to={"/login"} className="teal-text">
+                      Login
+                    </NavLink>
+                  )}
+                </li>
                 <li>
-                  <a
-                    id="materialize"
-                    href="https://materializecss.com"
-                    className="red-text"
-                  >
-                    end material design
+                  <a href="!#" className="teal-text">
+                    Components
+                  </a>
+                </li>
+                <li>
+                  <a href="!#" className="teal-text">
+                    JavaScript
                   </a>
                 </li>
               </ul>
