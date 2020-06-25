@@ -1,52 +1,38 @@
-import React from "react";
-import User from "./User/User";
-import user_default from "../../assets/img/user_default.png";
-import "./Users.css";
-import * as axios from "axios";
+import React from 'react'
+import User from './User/User'
+import user_default from '../../assets/img/user_default.png'
+import './Users.css'
 // import preloader from "../../assets/img/preloader.svg";
-import Preloader from "../common/Preloader/Preloader";
+import Preloader from '../common/Preloader/Preloader'
+import { usersAPI } from '../../api/api'
 
 class UsersAPIContainer extends React.Component {
   componentDidMount() {
-    this.props.setIsFetching(true);
-    axios
-      .get(
-        `https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`,
-        {
-          withCredentials: true,
-        }
-      )
+    this.props.setIsFetching(true)
+    usersAPI
+      .getUsers(this.props.currentPage, this.props.pageSize)
       .then((response) => {
-        this.props.setIsFetching(false);
-        this.props.setUsers(response.data.items);
+        this.props.setIsFetching(false)
+        this.props.setUsers(response.items)
         // this.props.setTotalUserCount(response.data.totalCount); // match more ...
-      });
+      })
   }
 
   onPageChanged = (pageNumber) => {
-    this.props.setCurrentPage(pageNumber);
-    this.props.setIsFetching(true);
-    axios
-      .get(
-        `https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`,
-        {
-          withCredentials: true,
-        }
-      )
-      .then((response) => {
-        this.props.setIsFetching(false);
-        this.props.setUsers(response.data.items);
-      });
-  };
+    this.props.setCurrentPage(pageNumber)
+    this.props.setIsFetching(true)
+    usersAPI.getUsers(pageNumber, this.props.pageSize).then((response) => {
+      this.props.setIsFetching(false)
+      this.props.setUsers(response.items)
+    })
+  }
 
   render() {
-    let pagesCount = Math.ceil(
-      this.props.totalUsersCount / this.props.pageSize
-    );
+    let pagesCount = Math.ceil(this.props.totalUsersCount / this.props.pageSize)
 
-    let pages = [];
+    let pages = []
     for (let i = 1; i <= pagesCount; i++) {
-      pages.push(i);
+      pages.push(i)
     }
 
     let users = this.props.users.map((user) => (
@@ -54,13 +40,15 @@ class UsersAPIContainer extends React.Component {
         id={user.id}
         photo={user.photos.small !== null ? user.photos.small : user_default}
         fullname={user.name}
-        status={user.status !== null ? user.status : "I am New user"}
-        city={user.location !== undefined ? user.location.city : "n/a"}
-        country={user.location !== undefined ? user.location.country : "n/a"}
+        status={user.status !== null ? user.status : 'I am New user'}
+        city={user.location !== undefined ? user.location.city : 'n/a'}
+        country={user.location !== undefined ? user.location.country : 'n/a'}
         followed={user.followed}
+        followingInProgress={this.props.followingInProgress}
         follow={this.props.follow}
+        toggleFollowProgress={this.props.toggleFollowProgress}
       />
-    ));
+    ))
     return (
       <div className="container col l8">
         <div className="center">
@@ -75,21 +63,20 @@ class UsersAPIContainer extends React.Component {
               return (
                 <li
                   className={
-                    this.props.currentPage === p ? "active" : "waves-effect"
+                    this.props.currentPage === p ? 'active' : 'waves-effect'
                   }
                 >
                   <a
                     href="#!"
                     onClick={() => {
-                      this.onPageChanged(p);
+                      this.onPageChanged(p)
                     }}
                   >
                     {p}
                   </a>
                 </li>
-              );
+              )
             })}
-
             <li className="waves-effect">
               <a href="#!">
                 <i className="material-icons">chevron_right</i>
@@ -99,8 +86,8 @@ class UsersAPIContainer extends React.Component {
         </div>
         {users}
       </div>
-    );
+    )
   }
 }
 
-export default UsersAPIContainer;
+export default UsersAPIContainer
