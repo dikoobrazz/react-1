@@ -2,11 +2,11 @@ import {
   addPost,
   onPostChange,
   onTitleChange,
-  setUserProfile,
-} from "../../redux/profile-reducer";
-import ProfileClass from "./ProfileClass";
-import { connect } from "react-redux";
-import { withRouter } from "react-router-dom";
+  acceptUserProfile,
+} from '../../redux/profile-reducer'
+import ProfileClass from './ProfileClass'
+import { connect } from 'react-redux'
+import { withRouter } from 'react-router-dom'
 
 // const ProfileContainer = (props) => {
 //   let state = props.store.getState().profilePage;
@@ -35,8 +35,8 @@ const mapStateToProps = (state) => {
     newPostText: state.profilePage.newPostText,
     newTitleText: state.profilePage.newTitleText,
     profile: state.profilePage.profile,
-  };
-};
+  }
+}
 
 // const mapDispatchToProps = (dispatch) => {
 //   return {
@@ -52,13 +52,13 @@ const mapStateToProps = (state) => {
 //   };
 // };
 
-let WithUrlDataContainerComponent = withRouter(ProfileClass);
+let WithUrlDataContainerComponent = withRouter(ProfileClass)
 
 const ProfileContainer = connect(mapStateToProps, {
   addPost,
   onPostChange,
   onTitleChange,
-  setUserProfile,
-})(WithUrlDataContainerComponent);
+  acceptUserProfile,
+})(WithUrlDataContainerComponent)
 
-export default ProfileContainer;
+export default ProfileContainer

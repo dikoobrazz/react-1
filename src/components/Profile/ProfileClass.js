@@ -1,17 +1,11 @@
-import React from "react";
-import ProfilePosts from "./ProfilePosts";
-import ProfileInfo from "./ProfileInfo";
-import * as axios from "axios";
+import React from 'react'
+import ProfilePosts from './ProfilePosts'
+import ProfileInfo from './ProfileInfo'
 
 class ProfileClass extends React.Component {
   componentDidMount() {
-    let userId = this.props.match.params.userId;
-    if (!userId) userId = 9;
-    axios
-      .get(`https://social-network.samuraijs.com/api/1.0/profile/` + userId)
-      .then((response) => {
-        this.props.setUserProfile(response.data);
-      });
+    let userId = this.props.match.params.userId
+    this.props.acceptUserProfile(userId)
   }
 
   render() {
@@ -20,8 +14,8 @@ class ProfileClass extends React.Component {
         <ProfileInfo profile={this.props.profile} />
         <ProfilePosts {...this.props} />
       </div>
-    );
+    )
   }
 }
 
-export default ProfileClass;
+export default ProfileClass

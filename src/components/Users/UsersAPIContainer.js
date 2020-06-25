@@ -2,29 +2,31 @@ import React from 'react'
 import User from './User/User'
 import user_default from '../../assets/img/user_default.png'
 import './Users.css'
-// import preloader from "../../assets/img/preloader.svg";
 import Preloader from '../common/Preloader/Preloader'
-import { usersAPI } from '../../api/api'
 
 class UsersAPIContainer extends React.Component {
   componentDidMount() {
-    this.props.setIsFetching(true)
-    usersAPI
-      .getUsers(this.props.currentPage, this.props.pageSize)
-      .then((response) => {
-        this.props.setIsFetching(false)
-        this.props.setUsers(response.items)
-        // this.props.setTotalUserCount(response.data.totalCount); // match more ...
-      })
+    this.props.getUsers(this.props.currentPage, this.props.pageSize)
+
+    // this.props.setIsFetching(true)
+    // usersAPI
+    //   .getUsers(this.props.currentPage, this.props.pageSize)
+    //   .then((response) => {
+    //     this.props.setIsFetching(false)
+    //     this.props.setUsers(response.items)
+    //     // this.props.setTotalUserCount(response.data.totalCount); // match more ...
+    //   })
   }
 
   onPageChanged = (pageNumber) => {
     this.props.setCurrentPage(pageNumber)
-    this.props.setIsFetching(true)
-    usersAPI.getUsers(pageNumber, this.props.pageSize).then((response) => {
-      this.props.setIsFetching(false)
-      this.props.setUsers(response.items)
-    })
+    this.props.getUsers(pageNumber, this.props.pageSize)
+
+    // this.props.setIsFetching(true)
+    // usersAPI.getUsers(pageNumber, this.props.pageSize).then((response) => {
+    //   this.props.setIsFetching(false)
+    //   this.props.setUsers(response.items)
+    // })
   }
 
   render() {
@@ -45,8 +47,8 @@ class UsersAPIContainer extends React.Component {
         country={user.location !== undefined ? user.location.country : 'n/a'}
         followed={user.followed}
         followingInProgress={this.props.followingInProgress}
-        follow={this.props.follow}
-        toggleFollowProgress={this.props.toggleFollowProgress}
+        followUser={this.props.followUser}
+        unfollowUser={this.props.unfollowUser}
       />
     ))
     return (

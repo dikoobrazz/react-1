@@ -1,7 +1,6 @@
 import React from 'react'
 import './User.css'
 import { NavLink } from 'react-router-dom'
-import { userFollow } from '../../../api/api'
 
 const User = (props) => {
   return (
@@ -26,13 +25,7 @@ const User = (props) => {
             disabled={props.followingInProgress.some((id) => id === props.id)}
             className="waves-effect waves-light btn-small red"
             onClick={() => {
-              props.toggleFollowProgress(true, props.id)
-              userFollow.unfollowUser(props.id).then((response) => {
-                if (response.data.resultCode === 0) {
-                  props.follow(props.id)
-                }
-                props.toggleFollowProgress(false, props.id)
-              })
+              props.unfollowUser(props.id)
             }}
           >
             Unfollow
@@ -43,13 +36,7 @@ const User = (props) => {
             disabled={props.followingInProgress.some((id) => id === props.id)}
             className="waves-effect waves-light btn-small"
             onClick={() => {
-              props.toggleFollowProgress(true, props.id)
-              userFollow.followUser(props.id).then((response) => {
-                if (response.data.resultCode === 0) {
-                  props.follow(props.id)
-                }
-                props.toggleFollowProgress(false, props.id)
-              })
+              props.followUser(props.id)
             }}
           >
             Follow
