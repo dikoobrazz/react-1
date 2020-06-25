@@ -1,6 +1,7 @@
 import React from 'react'
 import ProfilePosts from './ProfilePosts'
 import ProfileInfo from './ProfileInfo'
+import { Redirect } from 'react-router-dom'
 
 class ProfileClass extends React.Component {
   componentDidMount() {
@@ -9,6 +10,7 @@ class ProfileClass extends React.Component {
   }
 
   render() {
+    if (!this.props.isAuth) return <Redirect to="/login" />
     return (
       <div className="col l8">
         <ProfileInfo profile={this.props.profile} />

@@ -1,25 +1,28 @@
-import React from "react";
-import "./Dialogs.css";
-import DialogItem from "./DialogItem/DialogItem";
-import Message from "./Message/Message";
+import React from 'react'
+import './Dialogs.css'
+import DialogItem from './DialogItem/DialogItem'
+import Message from './Message/Message'
+import { Redirect } from 'react-router-dom'
 
 const Dialogs = (props) => {
   let onSendNewMessage = () => {
-    props.addMessage();
-  };
+    props.addMessage()
+  }
 
   let onMessageChange = (e) => {
-    debugger;
-    let message = e.target.value;
-    props.changeNewMessageText(message);
-  };
+    debugger
+    let message = e.target.value
+    props.changeNewMessageText(message)
+  }
 
   const dialogElements = props.state.dialogs.map((el) => (
     <DialogItem name={el.name} id={el.id} />
-  ));
+  ))
   const messageElements = props.state.messages.map((el) => (
     <Message message={el.message} id={el.id} />
-  ));
+  ))
+
+  if (!props.isAuth) return <Redirect to="/login" />
 
   return (
     <div className="container col l8">
@@ -55,7 +58,7 @@ const Dialogs = (props) => {
         <div className="container col l8">{messageElements}</div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Dialogs;
+export default Dialogs
