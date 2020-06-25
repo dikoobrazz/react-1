@@ -7,6 +7,7 @@ import {
 import ProfileClass from './ProfileClass'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
+import { withAuthRedirect } from '../../hoc/withAuthRedirect'
 
 // const ProfileContainer = (props) => {
 //   let state = props.store.getState().profilePage;
@@ -35,7 +36,7 @@ const mapStateToProps = (state) => {
     newPostText: state.profilePage.newPostText,
     newTitleText: state.profilePage.newTitleText,
     profile: state.profilePage.profile,
-    isAuth: state.auth.isAuth,
+    // isAuth: state.auth.isAuth,
   }
 }
 
@@ -53,7 +54,9 @@ const mapStateToProps = (state) => {
 //   };
 // };
 
-let WithUrlDataContainerComponent = withRouter(ProfileClass)
+let AuthRedirectComponent = withAuthRedirect(ProfileClass)
+
+let WithUrlDataContainerComponent = withRouter(AuthRedirectComponent)
 
 const ProfileContainer = connect(mapStateToProps, {
   addPost,
