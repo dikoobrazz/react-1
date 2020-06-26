@@ -69,7 +69,6 @@ const mapStateToProps = (state) => {
 // export default ProfileContainer
 
 export default compose(
-  withAuthRedirect,
   withRouter,
   connect(mapStateToProps, {
     addPost,

@@ -1,22 +1,22 @@
-import React from "react";
-import MyPosts from "./MyPosts/MyPosts";
+import React from 'react'
+import MyPosts from './../MyPosts/MyPosts'
 
 let ProfilePosts = (props) => {
-  let newPostElement = React.createRef();
+  let newPostElement = React.createRef()
 
   let onPostAdd = () => {
-    props.addPost();
-  };
+    props.addPost()
+  }
 
   let onPostTextChange = () => {
-    let text = newPostElement.current.value;
-    props.onPostChange(text);
-  };
+    let text = newPostElement.current.value
+    props.onPostChange(text)
+  }
 
   let onTitleTextChange = (e) => {
-    let title = e.target.value;
-    props.onTitleChange(title);
-  };
+    let title = e.target.value
+    props.onTitleChange(title)
+  }
   return (
     <div className="row">
       <div className="container col l12">
@@ -58,7 +58,7 @@ let ProfilePosts = (props) => {
       </div>
       <MyPosts posts={props.posts} />
     </div>
-  );
-};
+  )
+}
 
-export default ProfilePosts;
+export default ProfilePosts

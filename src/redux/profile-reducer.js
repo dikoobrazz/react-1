@@ -20,7 +20,30 @@ let initialState = {
       likeCount: 19,
     },
   ],
-  profile: null,
+  profile: {
+    aboutMe: 'I am a proger',
+    contacts: {
+      facebook: null,
+      website: null,
+      vk: 'vk.com/dimych',
+      twitter: 'https://twitter.com/@sdf',
+      instagram: 'instagra.com/sds',
+      youtube: null,
+      github: null,
+      mainLink: null,
+    },
+    lookingForAJob: true,
+    lookingForAJobDescription: 'FrontEnd React / Redux',
+    fullName: 'JackMoloko',
+    userId: 8838,
+    photos: {
+      small:
+        'https://social-network.samuraijs.com/activecontent/images/users/15/user-small.jpg?v=0',
+      large:
+        'https://social-network.samuraijs.com/activecontent/images/users/15/user.jpg?v=0',
+    },
+  },
+
   newPostText: '',
   newTitleText: '',
 }
@@ -83,7 +106,6 @@ export const setUserProfile = (profile) => ({
 })
 
 export const acceptUserProfile = (userId) => (dispatch) => {
-  if (!userId) userId = 9
   usersAPI.getUserProfile(userId).then((response) => {
     dispatch(setUserProfile(response.data))
   })

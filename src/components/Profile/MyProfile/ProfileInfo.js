@@ -1,18 +1,19 @@
-import React from "react";
-import "./ProfileCard.css";
-import Preloader from "../common/Preloader/Preloader";
+import React from 'react'
+import './ProfileCard.css'
+import Preloader from '../../common/Preloader/Preloader'
+import ProfileStatus from './ProfileStatus'
 
 let Contacts = (props) => {
   return Object.entries(props.contacts).map(([key, val]) => {
     return (
       <li>
-        <a href={!val ? "!#" : val}>
+        <a href={!val ? '!#' : val}>
           <i className={`fa fa-${key}`}></i>
         </a>
       </li>
-    );
-  });
-};
+    )
+  })
+}
 
 let ProfileInfo = (props) => {
   if (!props.profile) {
@@ -20,7 +21,7 @@ let ProfileInfo = (props) => {
       <div className="center">
         <Preloader />
       </div>
-    );
+    )
   }
   return (
     <div className="card">
@@ -29,7 +30,8 @@ let ProfileInfo = (props) => {
       </div>
       <div className="card-content">
         <h3>{props.profile.fullName}</h3>
-        <p>{props.profile.aboutMe}</p>
+        <ProfileStatus aboutMe={props.profile.aboutMe} />
+        <br />
         {props.profile.lookingForAJob ? (
           <>
             <h4>
@@ -45,7 +47,7 @@ let ProfileInfo = (props) => {
         </ul>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default ProfileInfo;
+export default ProfileInfo

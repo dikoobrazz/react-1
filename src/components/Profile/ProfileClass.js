@@ -1,10 +1,11 @@
 import React from 'react'
-import ProfilePosts from './ProfilePosts'
-import ProfileInfo from './ProfileInfo'
+import ProfilePosts from './MyProfile/ProfilePosts'
+import ProfileInfo from './MyProfile/ProfileInfo'
 
 class ProfileClass extends React.Component {
   componentDidMount() {
     let userId = this.props.match.params.userId
+    if (!userId) return
     this.props.acceptUserProfile(userId)
   }
 
