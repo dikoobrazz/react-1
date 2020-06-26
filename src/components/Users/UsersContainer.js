@@ -6,6 +6,7 @@ import {
   followUser,
   unfollowUser,
 } from '../../redux/users-reducer'
+import { compose } from 'redux'
 
 const mapStateToProps = (state) => {
   return {
@@ -38,11 +39,20 @@ const mapStateToProps = (state) => {
 //   };
 // };
 
-const UsersContainer = connect(mapStateToProps, {
-  setCurrentPage,
-  getUsers,
-  followUser,
-  unfollowUser,
-})(UsersAPIContainer)
+// const UsersContainer = connect(mapStateToProps, {
+//   setCurrentPage,
+//   getUsers,
+//   followUser,
+//   unfollowUser,
+// })(UsersAPIContainer)
 
-export default UsersContainer
+// export default UsersContainer
+
+export default compose(
+  connect(mapStateToProps, {
+    setCurrentPage,
+    getUsers,
+    followUser,
+    unfollowUser,
+  })
+)(UsersAPIContainer)
